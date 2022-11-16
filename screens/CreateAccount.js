@@ -3,8 +3,11 @@ import { KeyboardAvoidingView, Platform } from "react-native";
 import AuthButton from "../components/auth/AuthButton";
 import AuthLayout from "../components/auth/AuthLayout";
 import { TextInput } from "../components/auth/AuthShared";
+import { useEffect } from "react";
+import { useForm } from "react-hook-form";
 
 export default function CreateAccount() {
+  const { register, handleSubmit, setValue } = useForm();
   const lastNameRef = useRef();
   const usernameRef = useRef();
   const emailRef = useRef();
@@ -14,9 +17,17 @@ export default function CreateAccount() {
     nextOne?.current?.focus();
   };
 
-  const onDone = () => {
-    alert("done!");
+  const onValid = (data) => {
+    console.log(data);
   };
+
+  useEffect(() => {
+    register("firstName");
+    register("lastName");
+    register("username");
+    register("email");
+    register("password");
+  }, [register]);
 
   return (
     <AuthLayout>
@@ -31,33 +42,35 @@ export default function CreateAccount() {
           placeholder="First Name"
           placeholderTextColor={"rgba(255, 255, 255, 0.6)"}
           returnKeyType="next"
-          style={{ backgroundColor: "white", width: "100%" }}
           onSubmitEditing={() => onNext(lastNameRef)}
+          onChangeText={(text) => setValue("firstName", text)}
         />
         <TextInput
           ref={lastNameRef}
           placeholder="Last Name"
           placeholderTextColor={"rgba(255, 255, 255, 0.6)"}
           returnKeyType="next"
-          style={{ backgroundColor: "white", width: "100%" }}
           onSubmitEditing={() => onNext(usernameRef)}
+          onChangeText={(text) => setValue("lastName", text)}
         />
         <TextInput
           ref={usernameRef}
           placeholder="Username"
           placeholderTextColor={"rgba(255, 255, 255, 0.6)"}
           returnKeyType="next"
-          style={{ backgroundColor: "white", width: "100%" }}
           onSubmitEditing={() => onNext(emailRef)}
+          autoCapitalize="none"
+          onChangeText={(text) => setValue("username", text)}
         />
         <TextInput
           ref={emailRef}
           onSubmitEditing={() => onNext(passwordRef)}
           placeholder="Email"
+          autoCapitalize="none"
           placeholderTextColor={"rgba(255, 255, 255, 0.6)"}
           returnKeyType="next"
           keyboardType="email-address"
-          style={{ backgroundColor: "white", width: "100%" }}
+          onChangeText={(text) => setValue("email", text)}
         />
         <TextInput
           ref={passwordRef}
@@ -65,13 +78,14 @@ export default function CreateAccount() {
           secureTextEntry
           placeholderTextColor={"rgba(255, 255, 255, 0.6)"}
           returnKeyType="done"
-          style={{ backgroundColor: "white", width: "100%" }}
           onSubmitEditing={onDone}
+          onChangeText={(text) => setValue("password", text)}
+          onPress={handleSubmit(onValid)}
         />
         <AuthButton
           text="Create Account"
           disabled={true}
-          onPress={() => null}
+          onPress={handleSubmit(onValid)}
         />
       </KeyboardAvoidingView>
     </AuthLayout>
