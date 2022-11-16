@@ -1,8 +1,8 @@
 import React, { useRef } from "react";
-import { TextInput, KeyboardAvoidingView, Platform } from "react-native";
-import styled from "styled-components/native";
+import { KeyboardAvoidingView, Platform } from "react-native";
 import AuthButton from "../components/auth/AuthButton";
 import AuthLayout from "../components/auth/AuthLayout";
+import { TextInput } from "../components/auth/AuthShared";
 
 export default function CreateAccount() {
   const lastNameRef = useRef();
@@ -29,7 +29,7 @@ export default function CreateAccount() {
       >
         <TextInput
           placeholder="First Name"
-          placeholderTextColor="gray"
+          placeholderTextColor={"rgba(255, 255, 255, 0.6)"}
           returnKeyType="next"
           style={{ backgroundColor: "white", width: "100%" }}
           onSubmitEditing={() => onNext(lastNameRef)}
@@ -37,7 +37,7 @@ export default function CreateAccount() {
         <TextInput
           ref={lastNameRef}
           placeholder="Last Name"
-          placeholderTextColor="gray"
+          placeholderTextColor={"rgba(255, 255, 255, 0.6)"}
           returnKeyType="next"
           style={{ backgroundColor: "white", width: "100%" }}
           onSubmitEditing={() => onNext(usernameRef)}
@@ -45,7 +45,7 @@ export default function CreateAccount() {
         <TextInput
           ref={usernameRef}
           placeholder="Username"
-          placeholderTextColor="gray"
+          placeholderTextColor={"rgba(255, 255, 255, 0.6)"}
           returnKeyType="next"
           style={{ backgroundColor: "white", width: "100%" }}
           onSubmitEditing={() => onNext(emailRef)}
@@ -54,7 +54,7 @@ export default function CreateAccount() {
           ref={emailRef}
           onSubmitEditing={() => onNext(passwordRef)}
           placeholder="Email"
-          placeholderTextColor="gray"
+          placeholderTextColor={"rgba(255, 255, 255, 0.6)"}
           returnKeyType="next"
           keyboardType="email-address"
           style={{ backgroundColor: "white", width: "100%" }}
@@ -63,7 +63,7 @@ export default function CreateAccount() {
           ref={passwordRef}
           placeholder="Password"
           secureTextEntry
-          placeholderTextColor="gray"
+          placeholderTextColor={"rgba(255, 255, 255, 0.6)"}
           returnKeyType="done"
           style={{ backgroundColor: "white", width: "100%" }}
           onSubmitEditing={onDone}
