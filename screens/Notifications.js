@@ -11,7 +11,7 @@ export default function Feed() {
         justifyContent: "center",
       }}
     >
-      <Text style={{ color: "white" }}>Feed</Text>
+      <Text style={{ color: "white" }}>Notifications</Text>
     </View>
   );
 }
