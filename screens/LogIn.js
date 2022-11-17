@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { gql, useMutation } from "@apollo/client";
-import { isLoggedInVar } from "../apollo";
+import { isLoggedInVar, logUserIn } from "../apollo";
 import { Text, View, TouchableOpacity } from "react-native";
 import AuthLayout from "../components/auth/AuthLayout";
 import { TextInput } from "../components/auth/AuthShared";
@@ -35,12 +35,12 @@ export default function Login({ route: { params } }) {
     });
   };
 
-  const onCompleted = (data) => {
+  const onCompleted = async (data) => {
     const {
       login: { ok, token },
     } = data;
     if (ok) {
-      isLoggedInVar(true);
+      await logUserIn(token);
     }
   };
   const [loginMutation, { loading }] = useMutation(LOGIN_MUTATION, {
