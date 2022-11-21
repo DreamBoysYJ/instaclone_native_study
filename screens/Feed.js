@@ -2,7 +2,6 @@ import React from "react";
 import { Text, View, FlatList } from "react-native";
 import { gql, useQuery } from "@apollo/client";
 import { COMMENT_FRAGMENT, PHOTO_FRAGMENT } from "../fragments";
-import { logUserOut } from "../apollo";
 import AuthButton from "../components/auth/AuthButton";
 import ScreenLayout from "../components/ScreenLayout";
 import Photo from "../components/Photo";
