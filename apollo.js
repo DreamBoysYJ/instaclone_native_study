@@ -12,6 +12,8 @@ export const tokenVar = makeVar("");
 
 const TOKEN = "token";
 
+console.log(AsyncStorage.getItem(TOKEN));
+
 export const logUserIn = async (token) => {
   await AsyncStorage.setItem(TOKEN, token);
   isLoggedInVar(true);
@@ -25,7 +27,7 @@ export const logUserOut = async () => {
 };
 
 const httpLink = createHttpLink({
-  uri: "http://localhost:4000/graphql",
+  uri: "https://b1bb-1-228-98-162.jp.ngrok.io/graphql",
 });
 
 const authLink = setContext((_, { headers }) => {
