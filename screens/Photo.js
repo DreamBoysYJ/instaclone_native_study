@@ -1,6 +1,5 @@
-import Reactr from "react";
+import React from "react";
 import { Text, TouchableOpacity, View } from "react-native";
-import { useNavigation } from "@react-navigation/native";
 
 export default function Photo({ navigation }) {
   return (

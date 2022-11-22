@@ -1,7 +1,9 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { Button, Text, View } from "react-native";
+import { logUserOut } from "../apollo";
+import AuthButton from "../components/auth/AuthButton";
 
-export default function Feed() {
+export default function Profile() {
   return (
     <View
       style={{
@@ -12,6 +14,7 @@ export default function Feed() {
       }}
     >
       <Text style={{ color: "white" }}>Someone's Profile</Text>
+      <AuthButton onPress={() => logUserOut()}>LOG OUT</AuthButton>
     </View>
   );
 }
