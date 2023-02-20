@@ -31,6 +31,7 @@ export default function App() {
       isLoggedInVar(true);
       tokenVar(token);
     }
+    // preload 과정에서 미리 캐시 저장 설정
     await persistCache({
       cache,
       storage: new AsyncStorageWrapper(AsyncStorage),
